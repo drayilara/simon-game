@@ -125,10 +125,12 @@ function compareMoves(){
     moveByPlayer = [];
 }
 
+/* Pusblished at github pages
+
+https://drayilara.github.io/simon-game/
 
 
-
-
+*/
 
 
 
