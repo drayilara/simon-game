@@ -52,8 +52,6 @@ function start(){
         randomAudio.play();
         randomBtn.classList.add('pressed');
         setTimeout(() => randomBtn.classList.remove('pressed'),100);
-
-        body.removeEventListener('click', mobileEventHandler);
     };
 
     
@@ -65,6 +63,7 @@ function start(){
             title.style.fontSize = '25px';
             title.style.lineHeight = '1.5';
             title.innerText = `Press anywhere on the screen to start- do not press the tiles`;
+            body.removeEventListener('click', mobileEventHandler);
         }
 
     gameStart = true;
