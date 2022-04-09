@@ -63,7 +63,7 @@ function start(){
             title.style.fontSize = '25px';
             title.style.lineHeight = '1.5';
             title.innerText = `Press anywhere on the screen to start- do not press the tiles`;
-            body.removeEventListener('click', mobileEventHandler);
+            // body.removeEventListener('click', mobileEventHandler);
         }
 
     gameStart = true;
