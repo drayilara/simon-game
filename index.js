@@ -13,14 +13,17 @@ const yellowBtn = document.getElementById('yellow');
 const title = document.getElementById('level-title');
 const body = document.querySelector('body');
 
+const largeScreen = 768;
+
 let buttons = [greenBtn, redBtn, yellowBtn, blueBtn];
 let audio = [greenAudio, redAudio, yellowAudio, blueAudio];
 
 let random = () => Math.floor(Math.random() * 4);
 
-
 let gameLevel = 0;
 let gameStart = false;
+
+
 
 let computerMoves = [];
 let moveByPlayer = [];
@@ -29,7 +32,6 @@ let moveByPlayer = [];
 start();
 
 function start(){
-
     let randomIndex = random();
     let randomAudio = audio[randomIndex];
     let randomBtn = buttons[randomIndex];
@@ -44,14 +46,32 @@ function start(){
         },100);
     
         document.removeEventListener('keypress', keyboardEventHandler);
-    };  
+    }; 
     
-    document.addEventListener('keypress', keyboardEventHandler);
+    let mobileEventHandler = () => {
+        randomAudio.play();
+        randomBtn.classList.add('pressed');
+        setTimeout(() => randomBtn.classList.remove('pressed'),100);
+
+        body.removeEventListener('click', mobileEventHandler);
+    };
+
+    
+    
+        if (window.screen.width >= largeScreen) {
+            document.addEventListener('keypress', keyboardEventHandler);
+        } else {
+            body.addEventListener('click', mobileEventHandler);
+            title.innerText = `Press anywhere on the screen to start- do not press the tiles`;
+            title.style.fontSize = '15px';
+        }
 
     gameStart = true;
            
     computerMoves.push(randomBtn.id);
 }
+
+
 
 
 playerMove();
@@ -107,6 +127,7 @@ function compareMoves(){
             gameLevel = 0;
             gameStart = false;
             
+            
             title.innerText = `Game over.Press any key to restart`;
 
             body.classList.add('red');
@@ -131,10 +152,3 @@ https://drayilara.github.io/simon-game/
 
 
 */
-
-
-
-
-
-
-
