@@ -53,7 +53,7 @@ function start(){
         randomBtn.classList.add('pressed');
         setTimeout(() => randomBtn.classList.remove('pressed'),100);
 
-        body.removeEventListener('touchstart', mobileEventHandler);
+        body.removeEventListener('click', mobileEventHandler);
     };
 
     
@@ -61,7 +61,7 @@ function start(){
         if (window.screen.width >= largeScreen) {
             document.addEventListener('keypress', keyboardEventHandler);
         } else {
-            body.addEventListener('touchstart', mobileEventHandler);
+            body.addEventListener('click', mobileEventHandler);
             title.style.fontSize = '25px';
             title.style.lineHeight = '1.5';
             title.innerText = `Press anywhere on the screen to start- do not press the tiles`;
@@ -132,7 +132,7 @@ function compareMoves(){
                 title.innerText = `Game over.Press any key to restart`;
                 title.style.fontSize = '2rem';
             }else{
-                title.innerText = `Game over,click anywhere to start - do not press the tiles`;
+                title.innerText = `Game over,please refresh to start`;
             }
         
             body.classList.add('red');
